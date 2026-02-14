@@ -24,7 +24,7 @@ interface PageProps {
             id: number;
             name: string;
             category: string;
-            price: number;
+            price: string | number;
             created_at: string;
         }[];
         per_page: number,
@@ -91,7 +91,7 @@ export default function Index() {
                             <tr key={product.id}>
                                 <td className="px-4 py-2">{product.name}</td>
                                 <td className="px-4 py-2">{product.category}</td>
-                                <td className="px-4 py-2">${product.price.toFixed(2)}</td>
+                                <td className="px-4 py-2">${Number(product.price).toFixed(2)}</td>
                                 <td className="px-4 py-2">{new Date(product.created_at).toLocaleString()}</td>
                                 <td className="px-4 py-2">
                                     <Link href={EditProductRoute.url(product.id)} className="text-blue-500 hover:underline">Edit</Link>

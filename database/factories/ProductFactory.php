@@ -11,12 +11,13 @@ class ProductFactory extends Factory
 
     public function definition(): array
     {
+        // Use the global fake() helper directly
         return [
-            'name' => $this->faker->word(),
-            'category' => $this->faker->word(),
-            'price' => $this->faker->randomFloat(2, 1, 100),
-            'description' => $this->faker->sentence(),
-            'created_at' => $this->faker->dateTimeThisYear()
+            'name'        => fake()->words(3, true),
+            'category'    => fake()->randomElement(['Category 1', 'Category 2', 'Category 3']),
+            'price'       => fake()->randomFloat(2, 10, 500),
+            'description' => fake()->paragraph(),
+            'created_at'  => fake()->dateTimeThisYear(),
         ];
     }
 }
